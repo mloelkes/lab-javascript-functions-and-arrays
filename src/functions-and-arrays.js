@@ -7,6 +7,7 @@ function maxOfTwoNumbers(number1, number2) {
   return number2;
 }
 
+console.log("TEST")
 
 
 // Iteration #2: Find longest word
@@ -79,13 +80,7 @@ function averageNumbers(numbers) {
     return null;
   }
 
-  let sum = 0;
-  
-  for (let number of numbers) {
-    sum += number;
-  }
-
-  return sum / numbers.length;
+  return sumNumbers(numbers) / numbers.length;
 }
 
 
@@ -98,13 +93,7 @@ function averageWordLength(words) {
     return null;
   }
 
-  let totalWordsLength = 0;
-  
-  for (let word of words) {
-    totalWordsLength += word.length;
-  }
-
-  return totalWordsLength / words.length;
+  return sum(words) / words.length;
  }
 
 
@@ -115,22 +104,8 @@ function avg(values) {
     return null;
   }
 
-  let sum = 0;
-
-  for (let value of values) {
-    switch (typeof value) {
-      case 'number':
-      case 'boolean':
-        sum += value;
-        break;
-
-      case 'string':
-        sum += value.length;
-        break;
-    }
-  }
-
-  return sum / values.length;
+  const result = sum(values) / values.length;
+  return Number(result.toFixed(2));
 }
 
 
@@ -158,13 +133,15 @@ function uniquifyArray(arrayWithDublicateEntries) {
   let arrayWithUniqueEntries = [];
 
   for (let entry of arrayWithDublicateEntries) {
-    if (arrayWithUniqueEntries.indexOf(entry) === -1) {
+    if (!arrayWithUniqueEntries.includes(entry)) {
       arrayWithUniqueEntries.push(entry);
     }
   }
 
   return arrayWithUniqueEntries;
 }
+
+// return [...new Set(arrayWithDublicateEntries)];
 
 
 
@@ -176,14 +153,16 @@ function doesWordExist(words, wordToSearch) {
     return null;
   }
 
-  for (let word of words) {
-    if (wordToSearch === word) {
-      return true;
-    }
-  }
-
-  return false;
+  return words.includes(wordToSearch);
 }
+
+// for (let word of words) {
+//     if (wordToSearch === word) {
+//       return true;
+//     }
+//   }
+
+//   return false;
 
 
 
